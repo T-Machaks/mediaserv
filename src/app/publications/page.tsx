@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
-import { publications } from "@/data/publications";
+import { publications, getPublicationPageSrc } from "@/data/publications";
 
 export const metadata: Metadata = {
   title: "Publications | Mediaserv",
@@ -16,29 +17,29 @@ export default function PublicationsPage() {
         flipbook — click or drag a corner to turn the page.
       </p>
 
-      <div className="mt-10 grid gap-6 sm:grid-cols-2">
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {publications.map((publication) => (
           <Link
             key={publication.slug}
             href={`/publications/${publication.slug}`}
             className="group overflow-hidden rounded-lg border border-black/5 shadow-sm transition hover:shadow-md"
           >
-            <div
-              className="flex h-40 flex-col justify-end p-5 text-white"
-              style={{
-                background: `linear-gradient(135deg, ${publication.accent}, #1b1b3a)`,
-              }}
-            >
-              <p className="text-xs uppercase tracking-wide text-white/70">
+            <div className="relative h-72 w-full overflow-hidden bg-black/5">
+              <Image
+                src={getPublicationPageSrc(publication.slug, 1)}
+                alt={`${publication.title} cover`}
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover transition duration-300 group-hover:scale-105"
+              />
+            </div>
+            <div className="p-5">
+              <p className="text-xs uppercase tracking-wide" style={{ color: publication.accent }}>
                 {publication.issue}
               </p>
-              <h2 className="text-xl font-semibold">{publication.title}</h2>
-            </div>
-            <div className="flex items-center justify-between p-5">
-              <p className="text-sm text-foreground/70">{publication.description}</p>
-            </div>
-            <div className="px-5 pb-5">
-              <span className="text-sm font-semibold text-brand-navy group-hover:underline">
+              <h2 className="text-xl font-semibold text-brand-navy-dark">{publication.title}</h2>
+              <p className="mt-2 text-sm text-foreground/70">{publication.description}</p>
+              <span className="mt-3 inline-block text-sm font-semibold text-brand-navy group-hover:underline">
                 Read flipbook →
               </span>
             </div>

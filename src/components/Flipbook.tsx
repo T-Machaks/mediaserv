@@ -3,24 +3,22 @@
 import { forwardRef } from "react";
 import HTMLFlipBook from "react-pageflip";
 import type { Publication } from "@/data/publications";
+import { getPublicationPageSrc } from "@/data/publications";
 
-const Page = forwardRef<HTMLDivElement, { children: React.ReactNode; dark?: boolean }>(
-  function Page({ children, dark }, ref) {
-    return (
-      <div
-        ref={ref}
-        className={`flex h-full w-full items-center justify-center border border-black/10 p-8 text-center ${
-          dark ? "bg-brand-navy-dark text-white" : "bg-white text-brand-navy-dark"
-        }`}
-      >
-        {children}
-      </div>
-    );
-  }
-);
+const Page = forwardRef<HTMLDivElement, { src: string; alt: string }>(function Page(
+  { src, alt },
+  ref
+) {
+  return (
+    <div ref={ref} className="h-full w-full bg-white">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt} className="h-full w-full object-contain" loading="lazy" />
+    </div>
+  );
+});
 
 export default function Flipbook({ publication }: { publication: Publication }) {
-  const innerPages = Array.from({ length: publication.pageCount }, (_, index) => index + 1);
+  const pageNumbers = Array.from({ length: publication.pageCount }, (_, index) => index + 1);
 
   return (
     <HTMLFlipBook
@@ -48,29 +46,13 @@ export default function Flipbook({ publication }: { publication: Publication }) 
       className="mx-auto"
       style={{}}
     >
-      <Page dark>
-        <div>
-          <p className="text-xs uppercase tracking-widest text-white/60">{publication.issue}</p>
-          <h2 className="mt-2 text-2xl font-bold">{publication.title}</h2>
-        </div>
-      </Page>
-
-      {innerPages.map((pageNumber) => (
-        <Page key={pageNumber}>
-          <div>
-            <p className="text-sm text-foreground/50">{publication.title}</p>
-            <p className="mt-4 text-4xl font-bold text-brand-navy">{pageNumber}</p>
-            <p className="mt-4 text-sm text-foreground/60">Page content coming soon.</p>
-          </div>
-        </Page>
+      {pageNumbers.map((pageNumber) => (
+        <Page
+          key={pageNumber}
+          src={getPublicationPageSrc(publication.slug, pageNumber)}
+          alt={`${publication.title} — page ${pageNumber}`}
+        />
       ))}
-
-      <Page dark>
-        <div>
-          <p className="text-lg font-semibold">mediaserv</p>
-          <p className="mt-1 text-sm text-white/60">Advertising &amp; Marketing</p>
-        </div>
-      </Page>
     </HTMLFlipBook>
   );
 }
