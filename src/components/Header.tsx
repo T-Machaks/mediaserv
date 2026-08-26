@@ -19,7 +19,14 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
         <Link href="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
-          <Image src="/logo.jpg" alt="Mediaserv" width={140} height={45} priority className="h-10 w-auto object-contain" />
+          <Image
+            src="/logo-wordmark.png"
+            alt="Mediaserv Advertising & Marketing"
+            width={942}
+            height={240}
+            priority
+            className="h-8 w-auto object-contain"
+          />
         </Link>
 
         <nav className="hidden gap-8 md:flex">

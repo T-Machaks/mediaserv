@@ -25,11 +25,11 @@ export default function Home() {
       <section className="bg-gradient-to-br from-brand-navy-dark via-brand-navy to-brand-cyan text-white">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-6 py-24">
           <Image
-            src="/logo.jpg"
+            src="/logo.png"
             alt="Mediaserv"
-            width={220}
-            height={70}
-            className="h-14 w-auto rounded bg-white/95 object-contain px-3 py-2"
+            width={460}
+            height={291}
+            className="h-24 w-auto rounded bg-white/95 object-contain px-4 py-3"
             priority
           />
           <h1 className="max-w-2xl text-4xl font-bold sm:text-5xl">
