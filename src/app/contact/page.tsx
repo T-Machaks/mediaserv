@@ -19,11 +19,11 @@ export default function ContactPage() {
         <div className="space-y-6">
           <div>
             <p className="text-sm font-semibold text-brand-navy">Email</p>
-            <p className="text-sm text-foreground/70">info@mediaserv.co.zw</p>
+            <p className="text-sm text-foreground/70">enquiries@mediaserv.co.zw</p>
           </div>
           <div>
             <p className="text-sm font-semibold text-brand-navy">Phone</p>
-            <p className="text-sm text-foreground/70">+263 XX XXX XXXX</p>
+            <p className="text-sm text-foreground/70">+263 242 336668</p>
           </div>
           <div>
             <p className="text-sm font-semibold text-brand-navy">Address</p>
