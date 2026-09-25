@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Deploy the latest mediaserv site (static build, served directly by nginx).
+# Deploy the latest mediaserv site. nginx proxies to the Node server on :3000
+# (systemd unit mediaserv-website.service), which must be restarted after this
+# script to pick up the new build.
 set -euo pipefail
 
 cd "$(dirname "$0")"
@@ -10,7 +12,10 @@ git pull
 echo "Installing dependencies..."
 npm install
 
+echo "Cleaning previous build output..."
+rm -rf .next
+
 echo "Building..."
 npm run build
 
-echo "Done. nginx serves the new build directly — no restart needed."
+echo "Build complete."
