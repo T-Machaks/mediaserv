@@ -14,11 +14,29 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://mediaserv.co.zw";
+const ogImageUrl = `${siteUrl}/opengraph-image.png`;
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mediaserv.co.zw"),
+  metadataBase: new URL(siteUrl),
   title: "Mediaserv | Advertising & Marketing",
   description:
     "Mediaserv is an advertising and marketing agency delivering publications, campaigns, and brand experiences.",
+  openGraph: {
+    title: "Mediaserv | Advertising & Marketing",
+    description:
+      "Mediaserv is an advertising and marketing agency delivering publications, campaigns, and brand experiences.",
+    url: siteUrl,
+    siteName: "Mediaserv",
+    images: [{ url: ogImageUrl, width: 500, height: 500 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mediaserv | Advertising & Marketing",
+    description:
+      "Mediaserv is an advertising and marketing agency delivering publications, campaigns, and brand experiences.",
+    images: [ogImageUrl],
+  },
 };
 
 export default function RootLayout({
