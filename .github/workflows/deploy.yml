@@ -20,7 +20,7 @@ jobs:
           COMMAND_ID=$(aws ssm send-command \
             --instance-ids "i-09e9fd27536228937" \
             --document-name "AWS-RunShellScript" \
-            --parameters 'commands=["sudo -u ssm-user bash -lc \"cd /home/ssm-user/mediaserv && git pull && bash deploy.sh\""]' \
+            --parameters 'commands=["sudo -u ec2-user bash -lc \"cd /home/ec2-user/mediaserv-website && git pull && bash deploy.sh\" && sudo systemctl restart mediaserv-website"]' \
             --query "Command.CommandId" --output text)
 
           echo "SSM command id: $COMMAND_ID"
