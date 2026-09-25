@@ -12,8 +12,8 @@ git pull
 echo "Installing dependencies..."
 npm install
 
-echo "Cleaning previous build output..."
-rm -rf .next
+echo "Cleaning previous build output and caches..."
+rm -rf .next node_modules/.cache .turbo
 
 echo "Building..."
 npm run build
