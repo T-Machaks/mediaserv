@@ -28,14 +28,12 @@ export const metadata: Metadata = {
       "Mediaserv is an advertising and marketing agency delivering publications, campaigns, and brand experiences.",
     url: siteUrl,
     siteName: "Mediaserv",
-    images: [{ url: ogImageUrl, width: 500, height: 500 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Mediaserv | Advertising & Marketing",
     description:
       "Mediaserv is an advertising and marketing agency delivering publications, campaigns, and brand experiences.",
-    images: [ogImageUrl],
   },
 };
 
@@ -49,6 +47,17 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      {/*
+        Rendered directly (not via the `metadata` export) because this
+        project's build pipeline was regenerating a stale file-convention
+        og:image route pointing at localhost even with the source file
+        deleted. React 19 hoists meta/title/link tags rendered anywhere
+        in the tree into <head>, bypassing that broken resolution path.
+      */}
+      <meta property="og:image" content={ogImageUrl} />
+      <meta property="og:image:width" content="500" />
+      <meta property="og:image:height" content="500" />
+      <meta name="twitter:image" content={ogImageUrl} />
       <body className="min-h-full flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>
