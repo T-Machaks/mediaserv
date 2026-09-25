@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 const siteUrl = "https://mediaserv.co.zw";
-const ogImageUrl = `${siteUrl}/opengraph-image.png`;
+const ogImageUrl = `${siteUrl}/logo-square.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
