@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mediaserv.co.zw"),
   title: "Mediaserv | Advertising & Marketing",
   description:
     "Mediaserv is an advertising and marketing agency delivering publications, campaigns, and brand experiences.",
