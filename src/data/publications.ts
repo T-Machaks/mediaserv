@@ -23,7 +23,7 @@ export const publications: Publication[] = [
     issue: "2026 Edition",
     description:
       "Magazine of the Automotive and Diesel Merchants Association, covering industry news, market analysis, and featured advertisers.",
-    pageCount: 44,
+    pageCount: 86,
     accent: "#2e3192",
   },
   {
