@@ -17,6 +17,33 @@ export const publications: Publication[] = [
     pageCount: 32,
     accent: "#2e3192",
   },
+  {
+    slug: "adma-magazine-2026",
+    title: "ADMA Magazine",
+    issue: "2026 Edition",
+    description:
+      "Magazine of the Automotive and Diesel Merchants Association, covering industry news, market analysis, and featured advertisers.",
+    pageCount: 44,
+    accent: "#2e3192",
+  },
+  {
+    slug: "tobacco-year-planner-tsa-2026-27",
+    title: "Tobacco Year Planner — TSA Edition",
+    issue: "2026/27 Season",
+    description:
+      "Wall-chart year planner for the tobacco growing season, TSA-branded edition.",
+    pageCount: 1,
+    accent: "#2e3192",
+  },
+  {
+    slug: "tobacco-year-planner-cp-chemical-2026-27",
+    title: "Tobacco Year Planner — CP Chemical Edition",
+    issue: "2026/27 Season",
+    description:
+      "Wall-chart year planner for the tobacco growing season, CP Chemical-branded edition.",
+    pageCount: 1,
+    accent: "#2e3192",
+  },
 ];
 
 export function getPublication(slug: string) {
