@@ -20,6 +20,17 @@ const Page = forwardRef<HTMLDivElement, { src: string; alt: string }>(function P
 export default function Flipbook({ publication }: { publication: Publication }) {
   const pageNumbers = Array.from({ length: publication.pageCount }, (_, index) => index + 1);
 
+  if (publication.pageCount === 1) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={getPublicationPageSrc(publication.slug, 1)}
+        alt={publication.title}
+        className="mx-auto w-full max-w-4xl rounded-lg shadow-lg"
+      />
+    );
+  }
+
   return (
     <HTMLFlipBook
       width={360}
